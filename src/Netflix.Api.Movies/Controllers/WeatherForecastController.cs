@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using Netflix.Infrastructure.Abstractions.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using Netflix.Infrastructure.Abstractions.Services;
 
 namespace Netflix.Api.Movies.Controllers
 {
@@ -20,7 +20,7 @@ namespace Netflix.Api.Movies.Controllers
         private readonly ILogger<WeatherForecastController> _logger;
         private readonly IRatingService _ratingService;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger, 
+        public WeatherForecastController(ILogger<WeatherForecastController> logger,
                                          IRatingService ratingService)
         {
             _logger = logger;

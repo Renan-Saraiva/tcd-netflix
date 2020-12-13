@@ -11,7 +11,7 @@ namespace Netflix.Infrastructure.Services
         private const string BaseAddress = "http://RATINGSERVICE";
 
         public RatingService(HttpClient httpClient)
-        {           
+        {
             _httpClient = httpClient;
             _httpClient.BaseAddress = new Uri(BaseAddress);
         }

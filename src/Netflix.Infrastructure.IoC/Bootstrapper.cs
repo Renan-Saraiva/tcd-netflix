@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Netflix.Infrastructure.IoC.Bootstrappers;
-using System;
+using Netflix.Infrastructure.Services.Bootstrapper;
 
 namespace Netflix.Infrastructure.IoC
 {

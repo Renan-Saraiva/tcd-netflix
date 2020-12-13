@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Netflix.Api.Movies", "src\Netflix.Api.Movies\Netflix.Api.Movies.csproj", "{86A75E1B-CF4F-44C7-8FA7-B52D3E379073}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Netflix.Api.Movies", "src\Netflix.Api.Movies\Netflix.Api.Movies.csproj", "{86A75E1B-CF4F-44C7-8FA7-B52D3E379073}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Netflix.Api.Rating", "src\Netflix.Api.Rating\Netflix.Api.Rating.csproj", "{6FF5D683-03E2-438A-8600-440BAB5CF5E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Netflix.Api.Rating", "src\Netflix.Api.Rating\Netflix.Api.Rating.csproj", "{6FF5D683-03E2-438A-8600-440BAB5CF5E4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apis", "Apis", "{EE0005CC-BEA8-425D-8791-237DE4BA2E42}"
 EndProject
@@ -13,11 +13,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Workers", "Workers", "{7FC5
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{09247667-0701-402C-B680-0144B7D46B78}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Netflix.Infrastructure.IoC", "src\Netflix.Infrastructure.IoC\Netflix.Infrastructure.IoC.csproj", "{EF014E96-34CB-417A-85E6-7B9C5C581E4D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Netflix.Infrastructure.IoC", "src\Netflix.Infrastructure.IoC\Netflix.Infrastructure.IoC.csproj", "{EF014E96-34CB-417A-85E6-7B9C5C581E4D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Netflix.Infrastructure.Abstractions", "src\Netflix.Infrastructure.Abstractions\Netflix.Infrastructure.Abstractions.csproj", "{75EF3234-EC89-47BB-9BF2-3B9A3F84B9EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Netflix.Infrastructure.Abstractions", "src\Netflix.Infrastructure.Abstractions\Netflix.Infrastructure.Abstractions.csproj", "{75EF3234-EC89-47BB-9BF2-3B9A3F84B9EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Netflix.Infrastructure.Services", "src\Netflix.Infrastructure.Services\Netflix.Infrastructure.Services.csproj", "{65BF574F-E850-490C-869F-8C8EF42B8956}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Netflix.Infrastructure.Services", "src\Netflix.Infrastructure.Services\Netflix.Infrastructure.Services.csproj", "{65BF574F-E850-490C-869F-8C8EF42B8956}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
