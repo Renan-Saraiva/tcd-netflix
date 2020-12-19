@@ -1,0 +1,10 @@
+﻿{
+  "profiles": {
+    "Netflix.Worker.Discovey": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

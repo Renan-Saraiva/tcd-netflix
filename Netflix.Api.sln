@@ -19,6 +19,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Netflix.Infrastructure.Abst
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Netflix.Infrastructure.Services", "src\Netflix.Infrastructure.Services\Netflix.Infrastructure.Services.csproj", "{65BF574F-E850-490C-869F-8C8EF42B8956}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{8306F7AE-2FC9-49F7-B3C2-F3D78012C144}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Netflix.Domain", "src\Netflix.Domain\Netflix.Domain.csproj", "{CF939816-4817-4BE4-8EFF-A67C82A29D0A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Netflix.Worker.Discovey", "src\Netflix.Worker.Discovey\Netflix.Worker.Discovey.csproj", "{BFD21E3C-84D9-491E-A7D3-7A49DC69B42D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +51,14 @@ Global
 		{65BF574F-E850-490C-869F-8C8EF42B8956}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65BF574F-E850-490C-869F-8C8EF42B8956}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65BF574F-E850-490C-869F-8C8EF42B8956}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF939816-4817-4BE4-8EFF-A67C82A29D0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF939816-4817-4BE4-8EFF-A67C82A29D0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF939816-4817-4BE4-8EFF-A67C82A29D0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF939816-4817-4BE4-8EFF-A67C82A29D0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFD21E3C-84D9-491E-A7D3-7A49DC69B42D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFD21E3C-84D9-491E-A7D3-7A49DC69B42D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFD21E3C-84D9-491E-A7D3-7A49DC69B42D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFD21E3C-84D9-491E-A7D3-7A49DC69B42D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,6 +69,8 @@ Global
 		{EF014E96-34CB-417A-85E6-7B9C5C581E4D} = {09247667-0701-402C-B680-0144B7D46B78}
 		{75EF3234-EC89-47BB-9BF2-3B9A3F84B9EF} = {09247667-0701-402C-B680-0144B7D46B78}
 		{65BF574F-E850-490C-869F-8C8EF42B8956} = {09247667-0701-402C-B680-0144B7D46B78}
+		{CF939816-4817-4BE4-8EFF-A67C82A29D0A} = {8306F7AE-2FC9-49F7-B3C2-F3D78012C144}
+		{BFD21E3C-84D9-491E-A7D3-7A49DC69B42D} = {7FC5E2D1-17EB-4FDB-BF76-09C918B02062}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8B420B62-97F7-4E9A-AFB9-888DF657ABF7}
