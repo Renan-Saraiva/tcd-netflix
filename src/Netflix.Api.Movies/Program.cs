@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Steeltoe.Discovery.Client;
 using Steeltoe.Discovery.Eureka;
+using Steeltoe.Extensions.Configuration.ConfigServer;
 
 namespace Netflix.Api.Movies
 {
@@ -18,6 +19,7 @@ namespace Netflix.Api.Movies
                 {
                     webBuilder.UseStartup<Startup>();
                 })
-                .AddServiceDiscovery(options => options.UseEureka());
+                .AddServiceDiscovery(options => options.UseEureka())
+                .AddConfigServer();
     }
 }

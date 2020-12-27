@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 
 namespace Netflix.Api.Movies.Controllers
 {
@@ -8,6 +9,12 @@ namespace Netflix.Api.Movies.Controllers
     [ApiController]
     public class MoviesController : ControllerBase
     {
+        private readonly IConfiguration _config;
+        public MoviesController(IConfiguration config)
+        {
+            _config = config;
+        }
+
         [HttpGet("{id}")]
         public IActionResult Search(
             [FromQuery] string word, 
@@ -31,7 +38,9 @@ namespace Netflix.Api.Movies.Controllers
         [HttpGet("watched")]
         public IActionResult Get()
         {
-            return Ok();
+            var val1 = _config["Value1"];
+            var val2 = _config["Value2"];
+            return Ok(new string[] { val1, val2 });
         }
     }
 }

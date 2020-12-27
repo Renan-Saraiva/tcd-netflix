@@ -31,7 +31,7 @@ namespace Netflix.Api.Movies
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
 

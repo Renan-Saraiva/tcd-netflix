@@ -3,47 +3,78 @@
   networks: 
     net:
   services:
-    zookeeper:
-      image: confluentinc/cp-zookeeper:latest
-      networks: 
-        - net
-      ports:
-        - 2181:2181
-      environment:
-        ZOOKEEPER_CLIENT_PORT: 2181
-        ZOOKEEPER_TICK_TIME: 2000
+    # zookeeper:
+    #   image: confluentinc/cp-zookeeper:latest
+    #   networks: 
+    #     - net
+    #   ports:
+    #     - 2181:2181
+    #   environment:
+    #     ZOOKEEPER_CLIENT_PORT: 2181
+    #     ZOOKEEPER_TICK_TIME: 2000
   
-    kafka:
-      image: confluentinc/cp-kafka:latest
-      networks: 
-        - net
-      depends_on:
-        - zookeeper
-      ports:
-        - 9092:9092
-        - 29092:29092
-      environment:
-        KAFKA_BROKER_ID: 1
-        KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-        KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092
-        KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
-        KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
-        KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    # kafka:
+    #   image: confluentinc/cp-kafka:latest
+    #   networks: 
+    #     - net
+    #   depends_on:
+    #     - zookeeper
+    #   ports:
+    #     - 9092:9092
+    #     - 29092:29092
+    #   environment:
+    #     KAFKA_BROKER_ID: 1
+    #     KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+    #     KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092
+    #     KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+    #     KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+    #     KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
 
-    kafdrop:
-        image: obsidiandynamics/kafdrop:latest
-        networks: 
-            - net
-        depends_on:
-            - kafka
-        ports:
-            - 19000:9000
-        environment:
-            KAFKA_BROKERCONNECT: kafka:29092
+    # kafdrop:
+    #     image: obsidiandynamics/kafdrop:latest
+    #     networks: 
+    #         - net
+    #     depends_on:
+    #         - kafka
+    #     ports:
+    #         - 19000:9000
+    #     environment:
+    #         KAFKA_BROKERCONNECT: kafka:29092
 
     eureka:
         image: "steeltoeoss/eurekaserver"
+        container_name: eurekaserver
         networks: 
-            - net
+          - net
         ports:
-            - 8761:8761
+          - 8761:8761
+        healthcheck:
+          test: ["CMD-SHELL", "curl -f http://localhost:8761/eureka/apps/ && echo 'OK'"]
+          interval: 10s
+          timeout: 5s
+          retries: 3
+    config-server:
+      image: "steeltoeoss/config-server"
+      container_name: configserver
+      command: --spring.profiles.active=native --spring.cloud.config.server.native.searchLocations=/config
+      networks: 
+          - net
+      ports: 
+          - 8888:8888
+      volumes:
+          - ./src/config:/config
+    api:
+        image: netflix-api-movies
+        container_name: api-movies
+        build: 
+          context: ./src
+          dockerfile: Dockerfile
+        ports:
+          - "5101:5101"
+          - "5100:5100"
+        networks: 
+          - net
+        depends_on:
+          eureka:
+            condition: service_healthy
+        
