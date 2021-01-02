@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Netflix.Infrastructure.Abstractions.Messaging;
 
 namespace Netflix.Api.Movies.Controllers
 {
@@ -10,9 +11,12 @@ namespace Netflix.Api.Movies.Controllers
     public class MoviesController : ControllerBase
     {
         private readonly IConfiguration _config;
-        public MoviesController(IConfiguration config)
+        private readonly IMessageDispatcher _messageDispatcher;
+
+        public MoviesController(IConfiguration config, IMessageDispatcher messageDispatcher)
         {
             _config = config;
+            _messageDispatcher = messageDispatcher;
         }
 
         [HttpGet("{id}")]
@@ -38,9 +42,8 @@ namespace Netflix.Api.Movies.Controllers
         [HttpGet("watched")]
         public IActionResult Get()
         {
-            var val1 = _config["Value1"];
-            var val2 = _config["Value2"];
-            return Ok(new string[] { val1, val2 });
+            _messageDispatcher.Dispatch<string>("myqueue", _config["Value1"]);
+            return Ok(new string[] { _config["Value1"], _config["Value2"]});
         }
     }
 }

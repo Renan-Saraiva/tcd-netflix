@@ -1,9 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Netflix.Infrastructure.IoC;
+using Steeltoe.Discovery.Client;
+using Steeltoe.Discovery.Eureka;
+using Steeltoe.Extensions.Configuration.ConfigServer;
 
 namespace Netflix.Worker.Discovey
 {
@@ -16,9 +15,12 @@ namespace Netflix.Worker.Discovey
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .AddServiceDiscovery(options => options.UseEureka())
+                .AddConfigServer()
                 .ConfigureServices((hostContext, services) =>
                 {
-                    services.AddHostedService<Worker>();
+                    services.AddDependencies(hostContext.Configuration);
+                    services.AddConsumer<Consumer>(Consumer.QueueName);
                 });
     }
 }

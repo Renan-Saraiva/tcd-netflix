@@ -40,7 +40,15 @@
     #         - 19000:9000
     #     environment:
     #         KAFKA_BROKERCONNECT: kafka:29092
-
+    
+    rabbit-mq:
+        image: rabbitmq:3-management
+        container_name: rabbitmq
+        networks: 
+          - net
+        ports:
+          - 15672:15672
+          - 5672:5672
     eureka:
         image: "steeltoeoss/eurekaserver"
         container_name: eurekaserver
@@ -64,17 +72,17 @@
       volumes:
           - ./src/config:/config
     api:
-        image: netflix-api-movies
-        container_name: api-movies
-        build: 
-          context: ./src
-          dockerfile: Dockerfile
-        ports:
-          - "5101:5101"
-          - "5100:5100"
-        networks: 
-          - net
-        depends_on:
-          eureka:
-            condition: service_healthy
-        
+      image: netflix-api-movies
+      container_name: api-movies
+      build: 
+        context: ./src
+        dockerfile: Dockerfile
+      ports:
+        - "5101:5101"
+        - "5100:5100"
+      networks: 
+        - net
+      depends_on:
+        - rabbit-mq
+        - eureka
+            #condition: service_healthy      

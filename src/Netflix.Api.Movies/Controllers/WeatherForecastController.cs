@@ -30,7 +30,7 @@ namespace Netflix.Api.Movies.Controllers
         [HttpGet]
         public async Task<IEnumerable<WeatherForecast>> Get()
         {
-            var a = await _ratingService.GetRattingStars(Guid.NewGuid());
+            //var a = await _ratingService.GetRattingStars(Guid.NewGuid());
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {

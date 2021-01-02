@@ -21,4 +21,4 @@ RUN dotnet publish "Netflix.Api.Movies.csproj" -c Debug -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Netflix.Api.Movies.dll"]
+ENTRYPOINT ["dotnet", "Netflix.Api.Movies.dll", "--environment=Production"]

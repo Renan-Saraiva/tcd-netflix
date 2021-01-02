@@ -10,7 +10,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Netflix.Domain\Netflix.Domain.csproj" />
     <ProjectReference Include="..\Netflix.Infrastructure.Abstractions\Netflix.Infrastructure.Abstractions.csproj" />
+    <ProjectReference Include="..\Netflix.Infrastructure.Messaging\Netflix.Infrastructure.Messaging.csproj" />
     <ProjectReference Include="..\Netflix.Infrastructure.Services\Netflix.Infrastructure.Services.csproj" />
   </ItemGroup>
 
