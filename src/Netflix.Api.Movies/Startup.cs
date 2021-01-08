@@ -3,7 +3,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 using Netflix.Infrastructure.IoC;
+using Steeltoe.Extensions.Configuration.ConfigServer;
 
 namespace Netflix.Api.Movies
 {
@@ -16,6 +18,7 @@ namespace Netflix.Api.Movies
                  .SetBasePath(env.ContentRootPath)
                  .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                  .AddJsonFile($"appsettings.{(string.IsNullOrEmpty(environmentName) ? "Development" : environmentName)}.json", optional: true, reloadOnChange: true)
+                 .AddConfigServer(env)
                  .AddEnvironmentVariables();
 
             Configuration = builder.Build();
@@ -28,6 +31,8 @@ namespace Netflix.Api.Movies
         {
             services.AddControllers();
             services.AddDependencies(Configuration);
+            services.AddContextMovies(Configuration);
+            services.AddSwaggerGen();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,7 +43,10 @@ namespace Netflix.Api.Movies
                 app.UseDeveloperExceptionPage();
             }
 
-            //app.UseHttpsRedirection();
+            app.UseSwagger();
+            app.UseSwaggerUI(c=> {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Netflix API Movies");
+            });
 
             app.UseRouting();
 

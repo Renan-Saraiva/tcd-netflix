@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Netflix.Infrastructure.IoC;
 using Steeltoe.Discovery.Client;

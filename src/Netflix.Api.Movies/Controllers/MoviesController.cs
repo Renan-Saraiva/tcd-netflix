@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Netflix.Infrastructure.Abstractions.Messaging;
@@ -17,14 +16,6 @@ namespace Netflix.Api.Movies.Controllers
         {
             _config = config;
             _messageDispatcher = messageDispatcher;
-        }
-
-        [HttpGet("{id}")]
-        public IActionResult Search(
-            [FromQuery] string word, 
-            [FromQuery] string category)
-        {
-            return Ok();
         }
 
         [HttpGet("{id}")]

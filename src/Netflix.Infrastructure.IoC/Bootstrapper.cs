@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Netflix.Infrastructure.DB.Bootstrapper;
 using Netflix.Infrastructure.Messaging.Bootstrapper;
 using Netflix.Infrastructure.Services.Bootstrapper;
 
@@ -7,10 +8,15 @@ namespace Netflix.Infrastructure.IoC
 {
     public static class Bootstrapper
     {
-        public static void AddDependencies(this IServiceCollection services, IConfiguration Configuration)
+        public static void AddDependencies(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddServices();
-            services.AddMessaging();
+            services.AddMessaging(configuration);
+        }
+
+        public static void AddContextMovies(this IServiceCollection services, IConfiguration Configuration)
+        {
+            services.AddContextMovie(Configuration);
         }
 
         public static void AddConsumer<T>(this IServiceCollection services, string queueName) where T : class

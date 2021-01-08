@@ -9,6 +9,7 @@ WORKDIR /src
 COPY ["Netflix.Api.Movies/Netflix.Api.Movies.csproj", "Netflix.Api.Movies/"]
 COPY ["Netflix.Infrastructure.Abstractions/Netflix.Infrastructure.Abstractions.csproj", "Netflix.Infrastructure.Abstractions/"]
 COPY ["Netflix.Infrastructure.IoC/Netflix.Infrastructure.IoC.csproj", "Netflix.Infrastructure.IoC/"]
+COPY ["Netflix.Infrastructure.DB/Netflix.Infrastructure.DB.csproj", "Netflix.Infrastructure.DB/"]
 
 RUN dotnet restore "Netflix.Api.Movies/Netflix.Api.Movies.csproj"
 COPY . .

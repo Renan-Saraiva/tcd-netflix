@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Netflix.Infrastructure.Abstractions.Messaging;
 using Steeltoe.Messaging.RabbitMQ.Config;
 using Steeltoe.Messaging.RabbitMQ.Extensions;
@@ -7,11 +8,15 @@ namespace Netflix.Infrastructure.Messaging.Bootstrapper
 {
     public static class MessagingBootstrapper
     {
-        public static void AddMessaging(this IServiceCollection services)
+        public static void AddMessaging(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddRabbitServices();
             services.AddRabbitAdmin();
             services.AddRabbitTemplate();
+            services.Configure<RabbitOptions>(options =>
+            {
+                options.Addresses = configuration["Addresses"];
+            });
             services.AddScoped<IMessageDispatcher, MessageDispatcher>();
         }
 
