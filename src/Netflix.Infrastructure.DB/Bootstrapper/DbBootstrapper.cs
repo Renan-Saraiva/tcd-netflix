@@ -11,7 +11,7 @@ namespace Netflix.Infrastructure.DB.Bootstrapper
 
         public static void AddContextMovie(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<MovieContext>(options => options.UseMySql(configuration["ConnectionString"]));
+            services.AddDbContext<MovieContext>(options => options.UseMySql(configuration["ConnectionString"], b => b.MigrationsAssembly("Netflix.Api.Movies")));
             services.AddScoped<MovieCategoryRepository>();
         }
     }
