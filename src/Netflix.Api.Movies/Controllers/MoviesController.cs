@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Netflix.Domain.Entities;
+using Netflix.Infrastructure.Abstractions.DB;
 using Netflix.Infrastructure.Abstractions.Messaging;
 using Netflix.Infrastructure.DB.Repository.Movies;
 
@@ -20,9 +21,9 @@ namespace Netflix.Api.Movies.Controllers
     /// </summary>
     [Route("api/movies")]
     [ApiController]
-    public class MoviesController : BaseMoviesController<Movie, MovieRepository>
+    public class MoviesController : BaseMoviesController<Movie, IRepository<Movie>>
     {
-        public MoviesController(MovieRepository repository) : base(repository)
+        public MoviesController(IRepository<Movie> repository) : base(repository)
         {
 
         }

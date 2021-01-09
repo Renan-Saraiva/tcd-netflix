@@ -1,15 +1,16 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
 using Netflix.Domain.Entities;
+using Netflix.Infrastructure.Abstractions.DB;
 using Netflix.Infrastructure.DB.Repository.Movies;
 
 namespace Netflix.Api.Movies.Controllers
 {
     [Route("api/movies/categories")]
     [ApiController]
-    public class MoviesCategoriesController : BaseMoviesController<MovieCategory, MovieCategoryRepository>
+    public class MoviesCategoriesController : BaseMoviesController<MovieCategory, IRepository<MovieCategory>>
     {
-        public MoviesCategoriesController(MovieCategoryRepository repository) : base(repository)
+        public MoviesCategoriesController(IRepository<MovieCategory> repository) : base(repository)
         {
         }
 
