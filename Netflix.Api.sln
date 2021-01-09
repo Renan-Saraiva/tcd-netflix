@@ -29,6 +29,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Netflix.Infrastructure.Mess
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Netflix.Infrastructure.DB", "src\Netflix.Infrastructure.DB\Netflix.Infrastructure.DB.csproj", "{2DF0F6C3-F012-4818-B788-F77F28947393}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Netflix.Api.Tickets", "src\Netflix.Api.Ticket\Netflix.Api.Tickets.csproj", "{8D2FBC15-FE9B-4390-B2F8-79218C0D8C01}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +73,10 @@ Global
 		{2DF0F6C3-F012-4818-B788-F77F28947393}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2DF0F6C3-F012-4818-B788-F77F28947393}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2DF0F6C3-F012-4818-B788-F77F28947393}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D2FBC15-FE9B-4390-B2F8-79218C0D8C01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D2FBC15-FE9B-4390-B2F8-79218C0D8C01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D2FBC15-FE9B-4390-B2F8-79218C0D8C01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D2FBC15-FE9B-4390-B2F8-79218C0D8C01}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -85,6 +91,7 @@ Global
 		{BFD21E3C-84D9-491E-A7D3-7A49DC69B42D} = {7FC5E2D1-17EB-4FDB-BF76-09C918B02062}
 		{E38ADACB-A614-4520-BAAC-A82E5A405E21} = {09247667-0701-402C-B680-0144B7D46B78}
 		{2DF0F6C3-F012-4818-B788-F77F28947393} = {09247667-0701-402C-B680-0144B7D46B78}
+		{8D2FBC15-FE9B-4390-B2F8-79218C0D8C01} = {EE0005CC-BEA8-425D-8791-237DE4BA2E42}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8B420B62-97F7-4E9A-AFB9-888DF657ABF7}

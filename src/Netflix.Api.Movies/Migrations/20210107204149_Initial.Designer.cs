@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Netflix.Infrastructure.DB.Repository.Movie;
+using Netflix.Infrastructure.DB.Repository.Movies;
 
 namespace Netflix.Api.Movies.Migrations
 {

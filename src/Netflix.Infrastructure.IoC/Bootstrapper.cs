@@ -19,6 +19,11 @@ namespace Netflix.Infrastructure.IoC
             services.AddContextMovie(Configuration);
         }
 
+        public static void AddContextTickets(this IServiceCollection services, IConfiguration Configuration)
+        {
+            services.AddContextTicket(Configuration);
+        }
+
         public static void AddConsumer<T>(this IServiceCollection services, string queueName) where T : class
         {
             MessagingBootstrapper.AddConsumer<T>(services, queueName);

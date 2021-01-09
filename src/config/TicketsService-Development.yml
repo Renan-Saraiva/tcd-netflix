@@ -1,0 +1,4 @@
+ConnectionString: server=localhost;port=3306;database=NetflixApiTickets;uid=root;password=password
+Addresses: amqp://guest:guest@localhost
+Value1: TesteValor1-dese
+Value2: TesteValor2-dese
