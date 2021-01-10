@@ -25,9 +25,7 @@ namespace Netflix.Api.Movies.Controllers
         // GET: api/[controller]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TEntity>>> Get()
-        {
-            return await repository.GetAll();
-        }
+            => await repository.GetAll();
 
         // GET: api/[controller]/5
         [HttpGet("{id}")]
@@ -35,27 +33,20 @@ namespace Netflix.Api.Movies.Controllers
         {
             var movie = await repository.Get(id);
             if (movie == null)
-            {
                 return NotFound();
-            }
-            return movie;
+            
+            return Ok(movie);
         }
 
         // PUT: api/[controller]/5
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(Guid id, TEntity movie)
-        {
-            await repository.Update(movie);
-            return NoContent();
-        }
+            => Ok(await repository.Update(movie));
 
         // POST: api/[controller]
         [HttpPost]
-        public async Task<ActionResult<TEntity>> Post(TEntity movie)
-        {
-            await repository.Add(movie);
-            return Ok();
-        }
+        public async Task<ActionResult<TEntity>> Post(TEntity movie)       
+            => Created("", await repository.Add(movie));
 
         // DELETE: api/[controller]/5
         [HttpDelete("{id}")]
@@ -63,10 +54,9 @@ namespace Netflix.Api.Movies.Controllers
         {
             var movie = await repository.Delete(id);
             if (movie == null)
-            {
                 return NotFound();
-            }
-            return movie;
+
+            return Ok(movie);
         }
     }
 }

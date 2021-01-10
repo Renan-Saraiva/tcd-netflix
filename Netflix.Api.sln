@@ -21,7 +21,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{8306F7
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Netflix.Domain", "src\Netflix.Domain\Netflix.Domain.csproj", "{CF939816-4817-4BE4-8EFF-A67C82A29D0A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Netflix.Worker.Discovey", "src\Netflix.Worker.Discovey\Netflix.Worker.Discovey.csproj", "{BFD21E3C-84D9-491E-A7D3-7A49DC69B42D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Netflix.Worker.TicketsProcessor", "src\Netflix.Worker.TicketsProcessor\Netflix.Worker.TicketsProcessor.csproj", "{BFD21E3C-84D9-491E-A7D3-7A49DC69B42D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Netflix.Infrastructure.Messaging", "src\Netflix.Infrastructure.Messaging\Netflix.Infrastructure.Messaging.csproj", "{E38ADACB-A614-4520-BAAC-A82E5A405E21}"
 EndProject

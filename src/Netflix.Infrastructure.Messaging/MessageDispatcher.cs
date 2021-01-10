@@ -14,7 +14,7 @@ namespace Netflix.Infrastructure.Messaging
 
         public void Dispatch<T>(string queueName, T message)
         {
-            _rabbitTemplate.ConvertAndSend(queueName, message);
+            _rabbitTemplate.ConvertAndSend(queueName, System.Text.Json.JsonSerializer.Serialize(message));
         }
     }
 }

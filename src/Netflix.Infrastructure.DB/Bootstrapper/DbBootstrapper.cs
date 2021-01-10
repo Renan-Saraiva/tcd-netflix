@@ -18,8 +18,21 @@ namespace Netflix.Infrastructure.DB.Bootstrapper
             services.AddScoped<IRepository<MovieCategory>, MovieCategoryRepository>();
         }
 
-        public static void AddContextTicket(this IServiceCollection services, IConfiguration configuration)
+        public static void AddContextTicket(this IServiceCollection services, IConfiguration configuration, bool isWorker)
         {
+            if (isWorker)
+            {
+                services.AddDbContext<TicketContext>(
+                    options => options.UseMySql(
+                        configuration["ConnectionString"]
+                    ),
+                    ServiceLifetime.Singleton,
+                    ServiceLifetime.Singleton
+                );
+                services.AddSingleton<IRepository<Ticket>, TicketRepository>();
+                return;
+            }
+                                
             services.AddDbContext<TicketContext>(options => options.UseMySql(configuration["ConnectionString"], b => b.MigrationsAssembly("Netflix.Api.Tickets")));
             services.AddScoped<IRepository<Ticket>, TicketRepository>();
         }

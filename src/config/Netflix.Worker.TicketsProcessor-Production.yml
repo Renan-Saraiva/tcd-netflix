@@ -1,0 +1,2 @@
+ConnectionString: server=db;port=3306;database=NetflixApiTickets;uid=root;password=password
+Addresses: amqp://guest:guest@rabbitmq
