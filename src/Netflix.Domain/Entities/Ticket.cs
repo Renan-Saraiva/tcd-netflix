@@ -3,12 +3,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Netflix.Domain.Entities
 {
-    public class Ticket
+    public class Ticket : IEntity
     {
         [Key]
         public Guid Id { get; set; }
-
-        [Required]
+        
         public string Protocol { get; set; }
 
         [Required]

@@ -5,7 +5,7 @@ using Netflix.Domain.Enum;
 
 namespace Netflix.Domain.Entities
 {
-    public class Movie
+    public class Movie : IEntity
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

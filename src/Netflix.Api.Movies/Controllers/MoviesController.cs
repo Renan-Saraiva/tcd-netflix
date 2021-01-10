@@ -1,10 +1,7 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
 using Netflix.Domain.Entities;
 using Netflix.Infrastructure.Abstractions.DB;
-using Netflix.Infrastructure.Abstractions.Messaging;
-using Netflix.Infrastructure.DB.Repository.Movies;
 
 namespace Netflix.Api.Movies.Controllers
 {
@@ -20,10 +17,9 @@ namespace Netflix.Api.Movies.Controllers
     /// TODO: Remover
     /// </summary>
     [Route("api/movies")]
-    [ApiController]
-    public class MoviesController : BaseMoviesController<Movie, IRepository<Movie>>
+    public class MoviesController : BaseController<Movie, IMovieRepository>
     {
-        public MoviesController(IRepository<Movie> repository) : base(repository)
+        public MoviesController(IMovieRepository repository) : base(repository)
         {
 
         }

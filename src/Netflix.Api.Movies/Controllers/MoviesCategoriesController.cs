@@ -1,16 +1,15 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Netflix.Domain.Entities;
 using Netflix.Infrastructure.Abstractions.DB;
-using Netflix.Infrastructure.DB.Repository.Movies;
 
 namespace Netflix.Api.Movies.Controllers
 {
     [Route("api/movies/categories")]
-    [ApiController]
-    public class MoviesCategoriesController : BaseMoviesController<MovieCategory, IRepository<MovieCategory>>
+    public class MoviesCategoriesController : BaseController<MovieCategory, IMovieCategoryRepository>
     {
-        public MoviesCategoriesController(IRepository<MovieCategory> repository) : base(repository)
+        public MoviesCategoriesController(IMovieCategoryRepository repository) : base(repository)
         {
         }
 
@@ -19,9 +18,7 @@ namespace Netflix.Api.Movies.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("{id}/top-viewed")]
-        public IActionResult Get([FromRoute]Guid id, [FromQuery]int? top = 5)
-        {
-            return Ok();
-        }
+        public async Task<IActionResult> Get([FromRoute]Guid id, [FromQuery]int top = 5)
+             => Ok(await _repository.TopViewed(id, top));
     }
 }

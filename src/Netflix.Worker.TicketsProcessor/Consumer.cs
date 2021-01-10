@@ -1,3 +1,4 @@
+using System;
 using Microsoft.Extensions.Logging;
 using Netflix.Domain.Entities;
 using Netflix.Infrastructure.Abstractions.DB;
@@ -9,11 +10,11 @@ namespace Netflix.Worker.TicketsProcessor
     {
         public const string QueueName = "tickets-to-processor";
         private readonly ILogger<Consumer> _logger;
-        private readonly IRepository<Ticket> _ticketRepository;
+        private readonly ITicketRepository _ticketRepository;
 
         public Consumer(
-            ILogger<Consumer> logger, 
-            IRepository<Ticket> ticketRepository)
+            ILogger<Consumer> logger,
+            ITicketRepository ticketRepository)
         {
             _logger = logger;
             _ticketRepository = ticketRepository;
@@ -21,7 +22,16 @@ namespace Netflix.Worker.TicketsProcessor
 
         [RabbitListener(QueueName)]
         public void Listen(string json)
-            => _ticketRepository.Add(ConvertToTicket(json));
+        {
+            var ticket = ConvertToTicket(json);
+            ticket.Protocol = GenerateProtocol();
+            _ticketRepository.Add(ticket);
+        }
+
+        private string GenerateProtocol()
+        {
+            return DateTime.Now.ToString("ddMMyyyyhhmmss");
+        }
 
         public Ticket ConvertToTicket(string json)
             => System.Text.Json.JsonSerializer.Deserialize<Ticket>(json);

@@ -10,12 +10,11 @@ namespace Netflix.Infrastructure.DB.Bootstrapper
 {
     public static class DbBootstrapper
     {
-
         public static void AddContextMovie(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<MovieContext>(options => options.UseMySql(configuration["ConnectionString"], b => b.MigrationsAssembly("Netflix.Api.Movies")));
-            services.AddScoped<IRepository<Movie>, MovieRepository>();
-            services.AddScoped<IRepository<MovieCategory>, MovieCategoryRepository>();
+            services.AddScoped<IMovieRepository, MovieRepository>();
+            services.AddScoped<IMovieCategoryRepository, MovieCategoryRepository>();
         }
 
         public static void AddContextTicket(this IServiceCollection services, IConfiguration configuration, bool isWorker)
@@ -29,12 +28,12 @@ namespace Netflix.Infrastructure.DB.Bootstrapper
                     ServiceLifetime.Singleton,
                     ServiceLifetime.Singleton
                 );
-                services.AddSingleton<IRepository<Ticket>, TicketRepository>();
+                services.AddSingleton<ITicketRepository, TicketRepository>();
                 return;
             }
                                 
             services.AddDbContext<TicketContext>(options => options.UseMySql(configuration["ConnectionString"], b => b.MigrationsAssembly("Netflix.Api.Tickets")));
-            services.AddScoped<IRepository<Ticket>, TicketRepository>();
+            services.AddScoped<ITicketRepository, TicketRepository>();
         }
     }
 }

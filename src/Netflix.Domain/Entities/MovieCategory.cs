@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Netflix.Domain.Entities
 {
-    public class MovieCategory
+    public class MovieCategory : IEntity
     {
         [Key]
         public Guid Id { get; set; }
