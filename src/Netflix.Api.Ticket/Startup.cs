@@ -5,6 +5,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Netflix.Infrastructure.IoC;
 using Steeltoe.Extensions.Configuration.ConfigServer;
+using System;
+using System.IO;
+using System.Reflection;
 
 namespace Netflix.Api.Tickets
 {
@@ -31,7 +34,12 @@ namespace Netflix.Api.Tickets
             services.AddDependencies(Configuration);
             services.AddContextTickets(Configuration);
             services.AddControllers();
-            services.AddSwaggerGen();
+            services.AddSwaggerGen(c => {
+                c.SwaggerDoc(name: "v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Netflix Tickets", Version = "V1" });
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

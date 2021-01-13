@@ -33,15 +33,27 @@
           - 8888:8888
       volumes:
           - ./src/config:/config
-    api:
+    api-movie:
       image: netflix-api-movies
       container_name: api-movies
       build: 
         context: ./src
-        dockerfile: Dockerfile
+        dockerfile: Dockerfile_ApiMovies
       ports:
-        - "5101:5101"
-        - "5100:5100"
+        - "5001:5001"
+      networks: 
+        - net
+      depends_on:
+        eureka:
+          condition: service_healthy 
+    api-tickets:
+      image: netflix-api-tickets
+      container_name: api-tickets
+      build: 
+        context: ./src
+        dockerfile: Dockerfile_ApiTicket
+      ports:
+        - "5002:5002"
       networks: 
         - net
       depends_on:

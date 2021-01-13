@@ -4,6 +4,15 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile></DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20210112193712_teste.cs" />
+    <Compile Remove="Migrations\20210112193712_teste.Designer.cs" />
+  </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="Steeltoe.Discovery.ClientCore" Version="3.0.1" />
     <PackageReference Include="Steeltoe.Discovery.Eureka" Version="3.0.1" />
@@ -26,6 +35,10 @@
     <ProjectReference Include="..\Netflix.Infrastructure.Abstractions\Netflix.Infrastructure.Abstractions.csproj" />
     <ProjectReference Include="..\Netflix.Infrastructure.IoC\Netflix.Infrastructure.IoC.csproj" />
   </ItemGroup>
+  <PropertyGroup>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+  </PropertyGroup>
 
 
 </Project>

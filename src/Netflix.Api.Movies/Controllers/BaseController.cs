@@ -20,12 +20,18 @@ namespace Netflix.Api.Movies.Controllers
             _repository = repository;
         }
 
-        // GET: api/[controller]
+       /// <summary>
+       /// Lista todos os itens
+       /// </summary>
+       /// <returns></returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TEntity>>> Get()
             => await _repository.GetAll();
 
-        // GET: api/[controller]/5
+        /// <summary>
+        /// Busca item pelo id
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<TEntity>> Get(Guid id)
         {
@@ -36,7 +42,10 @@ namespace Netflix.Api.Movies.Controllers
             return Ok(entity);
         }
 
-        // PUT: api/[controller]/5
+        /// <summary>
+        /// Atualiza item pelo id
+        /// </summary>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(Guid id, TEntity entity)
         {
@@ -44,12 +53,18 @@ namespace Netflix.Api.Movies.Controllers
             return Ok(await _repository.Update(entity));
         }
 
-        // POST: api/[controller]
+        /// <summary>
+        /// Adicionada um novo item
+        /// </summary>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult<TEntity>> Post(TEntity entity)       
             => Created("", await _repository.Add(entity));
 
-        // DELETE: api/[controller]/5
+        /// <summary>
+        /// Apaga item pelo id
+        /// </summary>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public async Task<ActionResult<TEntity>> Delete(Guid id)
         {

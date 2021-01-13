@@ -29,6 +29,9 @@ namespace Netflix.Api.Movies.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
+                    b.Property<long>("LikedCount")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
@@ -52,11 +55,7 @@ namespace Netflix.Api.Movies.Migrations
                         .HasColumnType("char(36)");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int>("Rate")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -66,7 +65,7 @@ namespace Netflix.Api.Movies.Migrations
             modelBuilder.Entity("Netflix.Domain.Entities.Movie", b =>
                 {
                     b.HasOne("Netflix.Domain.Entities.MovieCategory", "Category")
-                        .WithMany()
+                        .WithMany("Movies")
                         .HasForeignKey("CategoryId");
                 });
 #pragma warning restore 612, 618

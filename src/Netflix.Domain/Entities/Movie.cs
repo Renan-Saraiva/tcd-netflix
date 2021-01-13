@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Netflix.Domain.Enum;
+﻿using Netflix.Domain.Enum;
+using System;
 
 namespace Netflix.Domain.Entities
 {
@@ -12,6 +10,23 @@ namespace Netflix.Domain.Entities
         public string Description { get; set; }
         public MovieStatus Status { get; set; }
         public long ViewedCount { get; set; }
+        public long LikedCount { get; set; }
+        public Guid CategoryId { get; set; }
         public MovieCategory Category { get; set; }
+
+        public void Like()
+        {
+            LikedCount++;
+        }
+
+        public void UnLike()
+        {
+            LikedCount--;
+        }
+
+        public void SetStatus(MovieStatus movieStatus)
+        {
+            Status = movieStatus;
+        }
     }
 }

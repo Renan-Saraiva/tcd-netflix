@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Netflix.Domain.Entities;
+using System;
 
 namespace Netflix.Infrastructure.DB.Repository.Movies
 {
@@ -10,7 +11,7 @@ namespace Netflix.Infrastructure.DB.Repository.Movies
 
         }
         
-        public DbSet<MovieCategory> MovieCategories { get; set; }
         public DbSet<Movie> Movies { get; set; }
+        public DbSet<MovieCategory> MovieCategories { get; set; }
     }
 }
